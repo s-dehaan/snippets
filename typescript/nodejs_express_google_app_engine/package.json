@@ -1,0 +1,101 @@
+{
+  "name": "nodejs-express-google-app-engine",
+  "version": "1.0.0",
+  "description": "Get up and running quickly with nodejs on Google App Engine.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc -p ./tsconfig-build.json",
+    "clean": "rimraf dist coverage .nyc_output node_modules",
+    "dev": "NODE_ENV=development nodemon ./src/server.ts",
+    "gcp-build": "npm run clean && npm run build",
+    "packages:update": "npm update && npx -y npm-check-updates -u && npm install",
+    "prestart": "npm run build",
+    "start": "NODE_ENV=production node ./dist/server.js",
+    "test": "NODE_ENV=test mocha ./src/test/**/*.spec.ts",
+    "test:coverage": "nyc npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-dehaan/snippets.git"
+  },
+  "private": true,
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "express",
+    "Google App Engine"
+  ],
+  "author": "Sebastiaan de Haan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s-dehaan/snippets/issues"
+  },
+  "homepage": "https://github.com/s-dehaan/snippets/typescript/nodejs_express_google_app_engine#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.0.6",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^8.20.0",
+    "eslint-config-google": "^0.14.0",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.19",
+    "nyc": "^15.1.0",
+    "supertest": "^6.2.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "google"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2016,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        4
+      ]
+    }
+  },
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "exit": true,
+    "require": [
+      "ts-node/register"
+    ],
+    "recursive": true,
+    "reporter": [
+      "dot"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100,
+    "reporter": [
+      "html",
+      "text-summary"
+    ]
+  }
+}
