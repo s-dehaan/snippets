@@ -1,0 +1,72 @@
+{
+  "name": "nodejs-restify",
+  "version": "1.0.0",
+  "description": "Restify boilerplate application to get up and running quickly.",
+  "main": "node app.js",
+  "scripts": {
+    "coverage": "nyc --reporter=lcov --reporter=text npm run test:all",
+    "devserver": "nodemon app.js | ./node_modules/.bin/bunyan -o short",
+    "start": "node app.js",
+    "test": "mocha --exit",
+    "test:all": "mocha --exit tests/index.js",
+    "update:check": "ncu",
+    "update:install": "ncu -u && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-dehaan/snippets.git"
+  },
+  "private": true,
+  "keywords": [
+    "restify",
+    "boilerplate"
+  ],
+  "author": "Sebastiaan de Haan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s-dehaan/snippets/issues"
+  },
+  "homepage": "https://github.com/s-dehaan/snippets#readme",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "restify": "^8.6.1",
+    "restify-errors": "^8.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.20.0",
+    "eslint-config-google": "^0.14.0",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.19",
+    "npm-check-updates": "^15.3.4",
+    "nyc": "^15.1.0",
+    "supertest": "^6.2.4"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "google"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2016,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        4
+      ],
+      "max-len": [
+        "error",
+        130
+      ]
+    }
+  }
+}
