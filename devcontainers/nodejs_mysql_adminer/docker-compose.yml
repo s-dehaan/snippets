@@ -1,0 +1,48 @@
+services:
+  app:
+    container_name: app
+    image: node:bullseye
+    user: 1001:1001
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../.:/workspace
+    environment:
+      - NODE_ENV=dev
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    networks:
+      - front-tier
+      - back-tier
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+  adminer:
+    container_name: adminer
+    image: adminer:latest
+    ports:
+      - "5000:8080"
+    networks:
+      - back-tier
+
+  db:
+    container_name: db
+    image: mariadb:latest
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MARIADB_USER=node
+      - MARIADB_PASSWORD=Secret
+      - MARIADB_ROOT_PASSWORD=SuperSecret
+    networks:
+      - back-tier
+
+volumes:
+  db_data:
+  node-modules:
+
+networks:
+  front-tier: {}
+  back-tier: {}
