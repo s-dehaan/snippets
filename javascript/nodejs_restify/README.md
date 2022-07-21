@@ -1,7 +1,15 @@
 # nodejs-restify
 > Restify boilerplate application to get up and running quickly.
 
-![GitHub](https://img.shields.io/github/license/s-dehaan/restify-boilerplate?style=flat-square)
+![GitHub](https://img.shields.io/github/license/s-dehaan/template-nodejs-google-app-engine?color=blue&style=for-the-badge)
+
+## Stack:
+
+![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Restify-404D59?style=for-the-badge)
+![Mocha](https://img.shields.io/badge/mocha.js-323330?style=for-the-badge&logo=mocha&logoColor=Brown)
+![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
 
 # Installation
 ```bash
