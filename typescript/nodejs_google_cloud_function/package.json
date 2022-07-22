@@ -1,0 +1,55 @@
+{
+  "name": "nodejs-google-cloud-functions",
+  "version": "1.0.0",
+  "description": "Nodejs cloud function writin in typescript.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "npx rimraf dist coverage .nyc_output node_modules",
+    "dev": "concurrently \"tsc -w\" \"nodemon -L --watch ./dist/ --exec npm run start\"",
+    "packages:update": "npm update && npx -y npm-check-updates -u",
+    "prestart": "npm run build",
+    "start": "functions-framework --target=status",
+    "test": "NODE_ENV=test jest",
+    "test:coverage": "NODE_ENV=test jest --coverage --coverageDirectory='coverage'"
+  },
+  "keywords": [
+    "typescript",
+    "google-cloud-functions"
+  ],
+  "author": "Sebastiaan de Haan",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-dehaan/snippets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/s-dehaan/snippets/issues"
+  },
+  "homepage": "https://github.com/s-dehaan/snippets/typescript/nodejs_google_cloud_function#readme",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.1.2"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.4.5",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.0.6",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "concurrently": "^7.3.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "supertest": "^6.2.4",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
+}
