@@ -1,0 +1,92 @@
+image: node:16
+
+definitions:
+  steps:
+    - step: &build
+        name: Build
+        caches:
+          - node
+        script:
+          - npm -ci install
+    - step: &lint
+        name: Lint
+        caches:
+          - node
+        script:
+          - npx eslint .
+    - step: &test
+        name: Test
+        caches:
+          - node
+        script:
+          - npm run test
+    - step: &coverage
+        name: Coverage
+        caches:
+          - node
+        script:
+          - npm run test:coverage
+    - step: &deploy-to-test
+        name: Deploy to test.
+        deployment: Test
+        script:
+          - pipe: atlassian/google-app-engine-deploy:1.0.0
+            variables:
+              KEY_FILE: $TEST_KEY_FILE
+              PROJECT: $TEST_PROJECT_ID
+              VERSION: $BITBUCKET_COMMIT
+    - step: &deploy-to-staging
+        name: Deploy to staging.
+        deployment: Staging
+        script:
+          - cd src
+          - pipe: atlassian/google-app-engine-deploy:1.0.0
+            variables:
+              KEY_FILE: $STAGING_KEY_FILE
+              PROJECT: $STAGING_PROJECT_ID
+              VERSION: $BITBUCKET_COMMIT
+    - step: &deploy-to-production
+        name: Deploy to production.
+        deployment: Production
+        script:
+          - pipe: atlassian/google-app-engine-deploy:1.0.0
+            variables:
+              KEY_FILE: $PRODUCTION_KEY_FILE
+              PROJECT: $PRODUCTION_PROJECT_ID
+              VERSION: $BITBUCKET_COMMIT
+
+pipelines:
+  branches:
+    test:
+      - step:
+          name: Environment detection
+          script:
+            - echo "Detected a commit on test."
+      - step: *build
+      - parallel:
+        - step: *lint
+        - step: *test
+        - step: *coverage
+      - step: *deploy-to-test
+    staging:
+      - step:
+          name: Environment detection
+          script:
+            - echo "Detected commit on staging."
+      - step: *build
+      - parallel:
+        - step: *lint
+        - step: *test
+        - step: *coverage
+      - step: *deploy-to-staging
+    main:
+      - step:
+          name: Environment detection
+          script:
+            - echo "Detected commit on main."
+      - step: *build
+      - parallel:
+        - step: *lint
+        - step: *test
+        - step: *coverage
+      - step: *deploy-to-production
