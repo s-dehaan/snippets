@@ -1,0 +1,21 @@
+services:
+  app:
+    image: node:bullseye
+    user: 1001:1001
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../.:/workspace
+    environment:
+      - NODE_ENV=dev
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    networks:
+      - front-tier
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+networks:
+  front-tier: {}
