@@ -1,7 +1,7 @@
 # Nodejs Express Google App Engine
 Deployable Google App Engine boilerplate application in Nodejs.
 
-![GitHub](https://img.shields.io/github/license/s-dehaan/template-nodejs-google-app-engine?color=blue&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/s-dehaan/snippets?color=blue&style=for-the-badge)
 
 ## Stack:
 

@@ -5,7 +5,7 @@ Get up and running Google [App Engine][App Engine].
 
 This simple application will get you up and running quickly using the Google [App Engine][App Engine] [standard environment][standard environment] for Node.js.
 
-![GitHub](https://img.shields.io/github/license/s-dehaan/template-nodejs-google-app-engine?color=blue&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/s-dehaan/snippets?color=blue&style=for-the-badge)
 
 ## Stack:
 

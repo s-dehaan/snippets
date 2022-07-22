@@ -4,7 +4,7 @@
 
 This simple application will get you up and running quickly using a standalone development environment.
 
-![GitHub](https://img.shields.io/github/license/s-dehaan/template-nodejs-google-app-engine?color=blue&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/s-dehaan/snippets?color=blue&style=for-the-badge)
 
 ## Stack:
 

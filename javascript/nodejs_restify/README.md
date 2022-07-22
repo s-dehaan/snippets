@@ -1,7 +1,7 @@
 # nodejs-restify
 > Restify boilerplate application to get up and running quickly.
 
-![GitHub](https://img.shields.io/github/license/s-dehaan/template-nodejs-google-app-engine?color=blue&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/s-dehaan/snippets?color=blue&style=for-the-badge)
 
 ## Stack:
 
