@@ -1,0 +1,14 @@
+{
+  "name": "Vue Dev Container",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "node",
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "humao.rest-client",
+    "redhat.vscode-yaml",
+    "vue.volar"
+  ]
+}
